@@ -47,10 +47,11 @@ export interface TradingInstrument {
   currencyPair: string;
   change: number;
   changePercent: number;
-  currentValue: number;
-  low: number;
-  high: number;
-  isPositive: boolean; // Determines if value is green (true) or red (false)
+  tradeValues: {
+    value1: string;
+    degree: "low" | "high" | "normal";
+    downValue: number;
+  }[];
 }
 
 export const tradingInstruments: TradingInstrument[] = [
@@ -60,10 +61,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "EUR/GBP",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: false, // Red
+    tradeValues: [
+      { value1: "1478.256369", degree: "low", downValue: 235698 },
+      { value1: "1478.256369", degree: "high", downValue: 25.3659 },
+    ],
   },
   {
     id: 2,
@@ -71,10 +72,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "EUR/USD",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: true, // Green
+    tradeValues: [
+      { value1: "1478.256369", degree: "normal", downValue: 235698 },
+      { value1: "1478.256369", degree: "high", downValue: 25.3659 },
+    ],
   },
   {
     id: 3,
@@ -82,10 +83,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "GBP/USD",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: false, // Red
+    tradeValues: [
+      { value1: "1478.256369", degree: "normal", downValue: 235698 },
+      { value1: "1478.256369", degree: "low", downValue: 25.3659 },
+    ],
   },
   {
     id: 4,
@@ -93,10 +94,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "USD/JPY",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: true, // Green
+    tradeValues: [
+      { value1: "1478.256369", degree: "low", downValue: 235698 },
+      { value1: "1478.256369", degree: "high", downValue: 25.3659 },
+    ],
   },
   {
     id: 5,
@@ -104,10 +105,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "AUD/USD",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: false, // Red
+    tradeValues: [
+      { value1: "1478.256369", degree: "low", downValue: 235698 },
+      { value1: "1478.256369", degree: "high", downValue: 25.3659 },
+    ],
   },
   {
     id: 6,
@@ -115,10 +116,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "USD/CAD",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: true, // Green
+    tradeValues: [
+      { value1: "1478.256369", degree: "normal", downValue: 235698 },
+      { value1: "1478.256369", degree: "high", downValue: 25.3659 },
+    ],
   },
   {
     id: 7,
@@ -126,10 +127,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "NZD/USD",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: false, // Red
+    tradeValues: [
+      { value1: "1478.256369", degree: "high", downValue: 235698 },
+      { value1: "1478.256369", degree: "low", downValue: 25.3659 },
+    ],
   },
   {
     id: 8,
@@ -137,10 +138,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "USD/CHF",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: true, // Green
+    tradeValues: [
+      { value1: "1478.256369", degree: "high", downValue: 235698 },
+      { value1: "1478.256369", degree: "low", downValue: 25.3659 },
+    ],
   },
   {
     id: 9,
@@ -148,10 +149,10 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "EUR/JPY",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: false, // Red
+    tradeValues: [
+      { value1: "1478.256369", degree: "low", downValue: 235698 },
+      { value1: "1478.256369", degree: "high", downValue: 25.3659 },
+    ],
   },
   {
     id: 10,
@@ -159,9 +160,9 @@ export const tradingInstruments: TradingInstrument[] = [
     currencyPair: "GBP/JPY",
     change: 30,
     changePercent: 23.2,
-    currentValue: 1478.256369,
-    low: 235698,
-    high: 25.3659,
-    isPositive: true, // Green
+    tradeValues: [
+      { value1: "1478.256369", degree: "low", downValue: 235698 },
+      { value1: "1478.256369", degree: "high", downValue: 25.3659 },
+    ],
   },
 ];

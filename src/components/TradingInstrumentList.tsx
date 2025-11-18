@@ -5,7 +5,7 @@ import BelgiumFlag from "/assets/belgium-flag.png";
 
 const TradingInstrumentList = () => {
   return (
-    <div className="w-full">
+    <div className="w-full mb-6">
       {tradingInstruments.map((instrument) => (
         <div
           key={instrument.id}
@@ -46,46 +46,49 @@ const TradingInstrumentList = () => {
           </div>
 
           <div className="flex items-center gap-6 flex-1 justify-end">
-            <div className="text-right flex items-center gap-2">
-              <div
-                className={cn(
-                  "text-lg font-semibold flex flex-col gap-1.5 leading-tight",
-                  instrument.isPositive ? "text-green-500" : "text-red-500"
-                )}
-              >
-                <span
-                  className={cn(
-                    "font-medium",
-                    instrument.isPositive ? "text-green-500" : "text-red-500"
-                  )}
-                >
-                  {" "}
-                  {instrument.currentValue.toLocaleString()}{" "}
-                </span>
-                <span className="text-gray-400">
-                  L:{instrument.low.toLocaleString()}
-                </span>
-              </div>
+            <div className="flex items-center gap-3">
+              {instrument.tradeValues.map((tradeValue, index) => {
+                const decimalIndex = tradeValue.value1.indexOf(".");
 
-              <div
-                className={cn(
-                  "text-lg font-semibold flex flex-col gap-1.5 leading-tight",
-                  instrument.isPositive ? "text-green-500" : "text-red-500"
-                )}
-              >
-                <span
-                  className={cn(
-                    "font-medium",
-                    instrument.isPositive ? "text-green-500" : "text-red-500"
-                  )}
-                >
-                  {" "}
-                  {instrument.currentValue.toLocaleString()}{" "}
-                </span>
-                <span className="text-gray-400">
-                  H:{instrument.high.toLocaleString()}
-                </span>
-              </div>
+                const splitIndex =
+                  decimalIndex !== -1 && decimalIndex > 0
+                    ? decimalIndex - 1
+                    : decimalIndex !== -1
+                    ? decimalIndex
+                    : tradeValue.value1.length;
+                const beforeColored =
+                  splitIndex > 0
+                    ? tradeValue.value1.substring(0, splitIndex)
+                    : "";
+                const coloredPart = tradeValue.value1.substring(splitIndex);
+
+                const getColorClass = () => {
+                  if (tradeValue.degree === "high") return "text-green-500";
+                  if (tradeValue.degree === "low") return "text-red-500";
+                  return "text-white";
+                };
+
+                const label = tradeValue.degree === "low" ? "L" : "H";
+
+                return (
+                  <div
+                    key={index}
+                    className="text-base font-normal flex flex-col gap-1.5 leading-tight"
+                  >
+                    <span className="font-normal flex items-baseline">
+                      {beforeColored && (
+                        <span className="text-white">{beforeColored}</span>
+                      )}
+                      <span className={cn("font-normal ", getColorClass())}>
+                        {coloredPart}
+                      </span>
+                    </span>
+                    <span className="text-gray-400 font-normal">
+                      {label}:{tradeValue.downValue}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
