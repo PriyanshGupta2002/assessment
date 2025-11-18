@@ -17,14 +17,14 @@ const TradingInstrumentList = () => {
                 <img
                   className="object-cover object-center w-full h-full"
                   src={USFlag}
-                  alt=""
+                  alt="US Flag"
                 />
               </div>
               <div className="w-8 h-8 overflow-hidden rounded-full bg-gray-500  mt-4 border-[1.5px] border-white -ml-4">
                 <img
                   className="object-cover object-center  w-full h-full"
                   src={BelgiumFlag}
-                  alt=""
+                  alt="Belgium Flag"
                 />
               </div>
             </div>
@@ -45,9 +45,7 @@ const TradingInstrumentList = () => {
             </div>
           </div>
 
-          {/* Right Section: Change, Current Value, Low/High */}
           <div className="flex items-center gap-6 flex-1 justify-end">
-            {/* Current Value and Low/High */}
             <div className="text-right flex items-center gap-2">
               <div
                 className={cn(
@@ -88,18 +86,6 @@ const TradingInstrumentList = () => {
                   H:{instrument.high.toLocaleString()}
                 </span>
               </div>
-
-              {/* <div className="flex items-center gap-3 text-xs text-gray-400 mt-1">
-              
-                <span
-                  className={cn(
-                    "font-medium",
-                    instrument.isPositive ? "text-green-500" : "text-red-500"
-                  )}
-                >
-                  H:{instrument.high.toLocaleString()}
-                </span>
-              </div> */}
             </div>
           </div>
         </div>
