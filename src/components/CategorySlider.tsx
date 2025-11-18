@@ -15,7 +15,7 @@ const CategorySlider = () => {
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={cn(
-                "text-sm font-medium whitespace-nowrap transition-colors duration-200",
+                "text-base font-medium whitespace-nowrap transition-colors duration-200",
                 isActive
                   ? "text-white"
                   : "text-gray-500 dark:text-gray-500 hover:text-gray-300"

@@ -1,5 +1,7 @@
 import { tradingInstruments } from "../utils/constants";
 import { cn } from "../utils/cn";
+import USFlag from "/assets/usa-flag.png";
+import BelgiumFlag from "/assets/belgium-flag.png";
 
 const TradingInstrumentList = () => {
   return (
@@ -9,12 +11,22 @@ const TradingInstrumentList = () => {
           key={instrument.id}
           className="flex items-center justify-between px-4 py-4 border-b border-gray-800 last:border-b-0"
         >
-          {/* Left Section: Time, Flags, and Currency Pair */}
-          <div className="flex items-start gap-3 flex-shrink-0">
-            {/* Placeholder for overlapping flags */}
+          <div className="flex items-start gap-3 shrink-0">
             <div className="relative flex items-center mt-1">
-              <div className="w-6 h-6 rounded-full bg-gray-600 border-2 border-gray-700"></div>
-              <div className="w-6 h-6 rounded-full bg-gray-500 border-2 border-gray-700 -ml-2"></div>
+              <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-600 border-[1.5px] border-white">
+                <img
+                  className="object-cover object-center w-full h-full"
+                  src={USFlag}
+                  alt=""
+                />
+              </div>
+              <div className="w-8 h-8 overflow-hidden rounded-full bg-gray-500  mt-4 border-[1.5px] border-white -ml-4">
+                <img
+                  className="object-cover object-center  w-full h-full"
+                  src={BelgiumFlag}
+                  alt=""
+                />
+              </div>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-xs text-gray-400 leading-tight">
@@ -36,19 +48,49 @@ const TradingInstrumentList = () => {
           {/* Right Section: Change, Current Value, Low/High */}
           <div className="flex items-center gap-6 flex-1 justify-end">
             {/* Current Value and Low/High */}
-            <div className="text-right">
+            <div className="text-right flex items-center gap-2">
               <div
                 className={cn(
-                  "text-lg font-semibold leading-tight",
+                  "text-lg font-semibold flex flex-col gap-1.5 leading-tight",
                   instrument.isPositive ? "text-green-500" : "text-red-500"
                 )}
               >
-                {instrument.currentValue.toLocaleString()}
-              </div>
-              <div className="flex items-center gap-3 text-xs text-gray-400 mt-1">
+                <span
+                  className={cn(
+                    "font-medium",
+                    instrument.isPositive ? "text-green-500" : "text-red-500"
+                  )}
+                >
+                  {" "}
+                  {instrument.currentValue.toLocaleString()}{" "}
+                </span>
                 <span className="text-gray-400">
                   L:{instrument.low.toLocaleString()}
                 </span>
+              </div>
+
+              <div
+                className={cn(
+                  "text-lg font-semibold flex flex-col gap-1.5 leading-tight",
+                  instrument.isPositive ? "text-green-500" : "text-red-500"
+                )}
+              >
+                <span
+                  className={cn(
+                    "font-medium",
+                    instrument.isPositive ? "text-green-500" : "text-red-500"
+                  )}
+                >
+                  {" "}
+                  {instrument.currentValue.toLocaleString()}{" "}
+                </span>
+                <span className="text-gray-400">
+                  H:{instrument.high.toLocaleString()}
+                </span>
+              </div>
+
+              {/* <div className="flex items-center gap-3 text-xs text-gray-400 mt-1">
+              
                 <span
                   className={cn(
                     "font-medium",
@@ -57,7 +99,7 @@ const TradingInstrumentList = () => {
                 >
                   H:{instrument.high.toLocaleString()}
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
